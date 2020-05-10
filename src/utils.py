@@ -6,6 +6,7 @@ def makesound(sound_key):
     sounds = {
         'coin':"https://sound.peal.io/ps/audios/000/007/926/original/334298__sojan__coinflic4.mp3",
         'rick':'https://sound.peal.io/ps/audios/000/000/537/original/woo_vu_luvub_dub_dub.wav',
+        #'error':'http://peal.io/download/6iens'
     }
     # Play the sound
     display(Audio(url=sounds[sound_key], autoplay=True))

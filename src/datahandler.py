@@ -59,7 +59,7 @@ def to_numeric(df):
     """
     Drop all the non-numeric fields from an input dataframe
     """
-    numeric_train_data = data.copy()
+    numeric_train_data = df.copy()
     
     for column, dtype in zip(numeric_train_data.columns, numeric_train_data.dtypes):
         if (dtype != 'float64') and (dtype != 'int64'):
