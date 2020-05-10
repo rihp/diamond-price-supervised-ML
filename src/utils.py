@@ -1,9 +1,14 @@
 from IPython.display import Audio, display
 import datetime
 
-def makesound():
-    """ Insert whatever audio file you want below """
-    display(Audio(url='https://sound.peal.io/ps/audios/000/000/537/original/woo_vu_luvub_dub_dub.wav', autoplay=True))
+def makesound(sound_key):
+    """ Plays the sound file of a given dictionary key """
+    sounds = {
+        'coin':"https://sound.peal.io/ps/audios/000/007/926/original/334298__sojan__coinflic4.mp3",
+        'rick':'https://sound.peal.io/ps/audios/000/000/537/original/woo_vu_luvub_dub_dub.wav',
+    }
+    # Play the sound
+    display(Audio(url=sounds[sound_key], autoplay=True))
 
 def new_high_score():
     print(f"{datetime.date.today()}:\n QUICK! MORTY! GET THE LASER GUN MORTY!\n THE MACHINE HAS LEARNED TO GENERALIZE")
