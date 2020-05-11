@@ -1,7 +1,7 @@
 # Predicting the sale price of a Diamond
-![ironhack logo](ironhack.com)
+![Ironhack logo](https://i.imgur.com/1QgrNNw.png)
 
-### Can a machine learning algorithm guess the price of a diamond based on its features?
+# Can a machine learning algorithm guess the price of a diamond based on its features?
 
 ![diamond colors comparison](INPUT/diamond_color_grid.jpg)
 
@@ -23,6 +23,8 @@ In this case, we have participated in a private Kaggle Competition, which consis
 To predict the price, we began with a minimal research of the topic, and the good ol' fashioned `linear regression`  model to find the correct sale price. 
 
 ## Optimization : `Root Mean Squared Error (RMSE)`
+-------------------------
+#### Benchmark:
 For the first attempt, we dropped all the non-numeric features from the dataset (`color`, `clarity`, etc.); and without cleaning the data, we proceeded to submit a prediction to Kaggle which measured an aprroximate `RMSE` value of `1539`.
 
 Our goal was to lower that score as much as possible.
@@ -31,6 +33,7 @@ Following that benchmark, we changeds the regression estimator to a `HistGradien
 
 In order to improve, we decided to change strategies, return to analyzing our data.
 
+#### Improving Pre-processing:
 We started cleaning our data further, by transforming the `clarity` into a linear scale from `0` to `N`, where `N` is the number of unique values for that feature, sorted from a pure diamond with a vaue of 0, to the haziest, impurest diamond `clarity` with a value of `N`. We did the same with the `color` and `cut` features.
 
 Using this newly categorized data, whcih we called `numfeats_qd`, and after refactoring our code, we were able to achieve an `RMSE` value of `603` with a `Linear Regression`, and of `564` with a parametrized `GradientBoostingRegressor()`
@@ -43,9 +46,9 @@ Aditionally, to enriched our data with an additional `depth_category` column, we
 
 ![light refraction is most optimal between depth ratios of 50 to 65 %](INPUT/light_refraction.jpg)
 
-## Working with models
+## Working with machine learning models (estimators):
 With this new metodology for data preprocessing, we achieved a `RMSE` of around `540`. This was a value we felt confident with, and with a score similar to other Kaggle competitors, so finally we took the remaining time of the competitio to refactor our code, prepare this presentation and use all the possible regression estimators from `sklearn` to find out the most appropriate use for our case study: 
 
-![Tested models, as seen in the modeltrainer.py module](INPUT/tested_models.png)
+![Tested models, as seen in the modeltrainer.py module](/INPUT/tested_models.png)
 
 Check out my github profile for more cool data projects: [@rihp](github.com/rihp)
