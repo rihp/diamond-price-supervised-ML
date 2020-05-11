@@ -1,5 +1,5 @@
 ###### Regression Models 
-from sklearn.linear_model import LinearRegression, RidgeCV, LassoCV, BayesianRidge, MultiTaskElasticNet, MultiTaskLasso, HuberRegressor, TheilSenRegressor, Lars
+from sklearn.linear_model import ElasticNet, LinearRegression, RidgeCV, LassoCV, BayesianRidge, HuberRegressor, TheilSenRegressor, Lars
 from sklearn.svm import LinearSVR, NuSVR, SVR
 from sklearn.tree import DecisionTreeRegressor, ExtraTreeRegressor
 from sklearn.experimental import enable_hist_gradient_boosting
@@ -11,14 +11,26 @@ from sklearn.neighbors import KNeighborsRegressor
 from sklearn.neural_network import MLPRegressor
 
 """
-DATA: numfeats_qd
-MODEL:  GradientBoostingRegressor(n_estimators=1100, random_state=1)
-highest_score = 529.87134
-"""
-highest_score = 620.9804697290087 
-
-"""
     ========================================== Tested Models ============================================
+
+    Optimizing: RMSE
+    
+    =====================================================================================================
+
+    DATA:         'numfeats_qd'
+    MODEL:         GradientBoostingRegressor(n_estimators=1100, random_state=1)
+        #RMSE    ~    529 ($)
+        #RUNTIME ~ UNKOWN (min)
+
+    ESTIMATORS_STACK =  [
+        ('RandomForestRegressor', RandomForestRegressor()),
+        ('HistGradientBoostingRegressor', HistGradientBoostingRegressor())
+    ]
+
+    'VotingRegressor':VotingRegressor(ESTIMATORS_STACK),
+        #RMSE    ~ 540 ($)
+        #RUNTIME ~  5 (min)
+
     'HistGradientBoostingRegressor':HistGradientBoostingRegressor(max_bins=255, loss='least_squares',
                                                                 max_iter=88,   max_leaf_nodes=25,
                                                                 random_state=1,
@@ -37,13 +49,21 @@ highest_score = 620.9804697290087
     ======================================== Experimental Models ========================================
 """
 
-ESTIMATORS_STACK =  [ # to be used with StackingRegressor() estimator
+highest_score = 530
+
+ESTIMATORS_STACK =  [
+    # to be used with StackingRegressor() estimator
     ('RandomForestRegressor', RandomForestRegressor()),
     ('HistGradientBoostingRegressor', HistGradientBoostingRegressor())
 ]
 
 
 models = {
+
+    'RandomForestRegressor':RandomForestRegressor(),
+        #RMSE    ~  551 ($)
+        #RUNTIME ~   4 (min)
+
     #'StackingRegressor':StackingRegressor(estimators=ESTIMATORS_STACK),
         #COMMENT: Can stack multiple estimators and generate a regression from it.
         #RMSE    ~  528 ($)
@@ -57,9 +77,9 @@ models = {
         #RMSE    ~ 1149 ($)
         #RUNTIME ~ UNKOWN(min)
 
-    'BayesianRidge':BayesianRidge(),
-        #RMSE    ~ UNKOWN($)
-        #RUNTIME ~ UNKOWN(min)
+    #'BayesianRidge':BayesianRidge(),
+        #RMSE    ~ 1206 ($)
+        #RUNTIME ~    0 (min)
 
     #"DecisionTreeRegressor":DecisionTreeRegressor(),
         #RMSE    ~   743 ($)
@@ -77,8 +97,8 @@ models = {
         #RMSE    ~    623 ($)
         #RUNTIME ~ UNKOWN(min)
 
-    'HuberRegressor':HuberRegressor(),
-        #RMSE    ~ UNKOWN($)
+    #'HuberRegressor':HuberRegressor(),
+        #RMSE    ~ 1289 ($)
         #RUNTIME ~ UNKOWN(min)
 
     #'IsotonicRegression': IsotonicRegression(),
@@ -86,16 +106,16 @@ models = {
         #RMSE    ~ UNKOWN($)
         #RUNTIME ~ UNKOWN(min)
 
-    'KNeighborsRegressor':KNeighborsRegressor(),
-        #RMSE    ~ UNKOWN($)
+    #'KNeighborsRegressor':KNeighborsRegressor(),
+        #RMSE    ~    748 ($)
         #RUNTIME ~ UNKOWN(min)
 
-    'LassoCV':LassoCV(),
-        #RMSE    ~ UNKOWN($)
-        #RUNTIME ~ UNKOWN(min)
+    #'LassoCV':LassoCV(),
+        #RMSE    ~ 1185 ($)
+        #RUNTIME ~    0 (min)
 
-    'Lars':Lars(),
-        #RMSE    ~ UNKOWN($)
+    #'Lars':Lars(),
+        #RMSE    ~ 1244 ($)
         #RUNTIME ~ UNKOWN(min)
 
     #'linear_regression':LinearRegression(fit_intercept=True, normalize=False, copy_X=True, n_jobs=None),
@@ -110,17 +130,22 @@ models = {
         #RMSE    ~ 1500 ($)
         #RUNTIME ~    1 (min)
 
-    'MultiTaskElasticNet':MultiTaskElasticNet(),
+    #'ElasticNet':ElasticNet(),
+        #RMSE    ~ 1737 ($)
+        #RUNTIME ~ UNKOWN(min)
+
+
+    #'MultiTaskElasticNet':MultiTaskElasticNet(),
         #RMSE    ~ UNKOWN($)
         #RUNTIME ~ UNKOWN(min)
 
-    'MultiTaskLasso':MultiTaskLasso(),
+    #'MultiTaskLasso':MultiTaskLasso(),
         #RMSE    ~ UNKOWN($)
         #RUNTIME ~ UNKOWN(min)
 
-    'MLPRegressor': MLPRegressor(),
-        #RMSE    ~ UNKOWN($)
-        #RUNTIME ~ UNKOWN(min)
+    #'MLPRegressor': MLPRegressor(),
+        #RMSE    ~ 991 ($)
+        #RUNTIME ~ Takes more than 15 (min)
 
     #'NuSVR':NuSVR(), 
         #RMSE    ~ DOES NOT WORK!
@@ -134,8 +159,8 @@ models = {
         #RMSE    ~ UNKOWN($)
         #RUNTIME ~ TAKES MORE THAN 5 MINUTES
 
-    'TheilSenRegressor':TheilSenRegressor(),
-        #RMSE    ~ UNKOWN($)
+    #'TheilSenRegressor':TheilSenRegressor(),
+        #RMSE    ~ 1540 ($)
         #RUNTIME ~ UNKOWN(min)
 
     #'VotingRegressor':VotingRegressor(ESTIMATORS_STACK),

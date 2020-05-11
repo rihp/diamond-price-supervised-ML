@@ -2,29 +2,22 @@ import numpy as np
 import seaborn as sns
 import matplotlib.pyplot as plt
 
-
-
 def use_my_numeric_scales(df):
     """
+                        Diamond G.I.A. Clarity Scale
+                     (separations are not equi-distant)
 
-                     Diamond G.I.A. Clarity Scale
-                   Categories are not equi-distant 
-
-    IF        VVS1   VVS2     VS1   VS2       SI1  SI2        I1
-    |----------|-----|---------|-----|---------|----|-------------
-    0                                                         10
+    IF          VVS1  VVS2         VS1   VS2         SI1  SI2            I1
+    |------------|-----|-------------|-----|-----------|----|-------------|
+    0.0                                                                   10.0
 
     more info : https://4cs.gia.edu/en-us/diamond-clarity/
     """
 
     cleanup_nums = {"clarity":    {'IF':   0,
-
                                    'VVS1': 2.0, 'VVS2':2.5,
-
                                    'VS1':  3.1,  'VS2':3.6,
-
                                    'SI1':  6.0,  'SI2':6.5,
-
                                    'I1':   10,},
 
                     "cut": {'Ideal':0, 'Premium':1, 'Very Good':2,  'Good':3, 'Fair':4, },
@@ -37,18 +30,19 @@ def use_my_numeric_scales(df):
 
 def depth_qualifyer(depth):
     """
-
             Perfect depth (0) refracts more light, a bad depth lets the light escape.
                             Optimal depth is between 59 and 62
 
-        |-------------------------------------------------------------------------|
     good_depth                                                               bad_depth
-
+        |-------------------------------------------------------------------------|
+       0.0                                                                       2.0 
+       
     """
     d = depth
     good_d = (59, 62)  # Recommended (55, 60) or (59,62)
     reg_d =  (54, 67)  # Arbitrary values  
-    bad_d =  (49, 72)  # Arbitrary values  
+    bad_d =  (49, 69)  # Arbitrary values  
+    # good_d, reg_d, bad_d = (59, 62), (55, 67), (49, 70)        # RMSE: 529 
 
     if                     (good_d[0] <= d <= good_d[1]):                   return 0.0     # Perfect depth, a lot of light is reflected
     elif   (reg_d[0] <= d < good_d[0])   or  (good_d[1] < d <= reg_d[1]):   return 0.2
@@ -87,6 +81,10 @@ def corr_matrix(df):
 
 
 def visualize_data(X, y):
+    """
+    Generate all Scatter Plots of Features in relation with their label
+    """
+
     f,a = plt.subplots(1, len(X.columns), figsize=(20,4))
     f.tight_layout(pad=5)
     f.suptitle('Features distribution\n', size=16)
