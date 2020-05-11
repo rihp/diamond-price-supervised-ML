@@ -2,6 +2,7 @@
 ![Ironhack logo](https://i.imgur.com/1QgrNNw.png)
 
 A weekend project by Roberto Henríquez Perozo
+Data Analytics Bootcamp - March 2020
 
 # Can a machine learning algorithm guess the price of a diamond based on its features?
 
@@ -56,4 +57,4 @@ With this new metodology for data preprocessing, we achieved a `RMSE` of around 
 
 ![Tested models, as seen in the src.modeltrainer.py module](/INPUT/tested_models.png)
 -----
-## Check out my github profile for more cool data projects: [@rihp](github.com/rihp)
+## Check out my github profile for more cool data projects: [@rihp](www.github.com/rihp)
