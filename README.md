@@ -4,6 +4,7 @@
 A weekend project by Roberto Henríquez Perozo
 Data Analytics Bootcamp - March 2020
 
+
 # Can a machine learning algorithm guess the price of a diamond based on its features?
 
 ![diamond colors comparison](INPUT/diamond_color_grid.jpg)
