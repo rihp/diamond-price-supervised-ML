@@ -44,11 +44,16 @@ As a result of this conversation, we changed the scales of the `clarity`, which 
 
 Aditionally, to enriched our data with an additional `depth_category` column, we copied and transformed the `depth` values into an arbitrary one when they were found between a range that we wanted to specify. --- This was done because  of the information discussed with the jewelery seller **the depth ratio is one of the main features responsible of the refraction of light on a diamond.** If the depth ratio is between the values of `55 to 65` percent, then the light is better refracted when the diamond is seen from above.
 
-![light refraction is most optimal between depth ratios of 50 to 65 %](INPUT/light_refraction.jpg)
+![light refraction is most optimal between depth ratios of 50 to 65 %](/INPUT/light_refraction.jpg)
+
+
+These scales of subjective value in the way a diamond refracts light was achieved using the following function of the `src.datahandler.py` module.
+
+![Snippet of code from the src.datahandler.py module](/INPUT/numeric_scales.jpg)
 
 ## Working with machine learning models (estimators):
 With this new metodology for data preprocessing, we achieved a `RMSE` of around `540`. This was a value we felt confident with, and with a score similar to other Kaggle competitors, so finally we took the remaining time of the competitio to refactor our code, prepare this presentation and use all the possible regression estimators from `sklearn` to find out the most appropriate use for our case study: 
 
-![Tested models, as seen in the modeltrainer.py module](/INPUT/tested_models.png)
-
-Check out my github profile for more cool data projects: [@rihp](github.com/rihp)
+![Tested models, as seen in the src.modeltrainer.py module](/INPUT/tested_models.png)
+-----
+## Check out my github profile for more cool data projects: [@rihp](github.com/rihp)
