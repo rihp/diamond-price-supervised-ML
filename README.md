@@ -1,11 +1,13 @@
 # Predicting the sale price of a Diamond
 ![Ironhack logo](https://i.imgur.com/1QgrNNw.png)
 
+A weekend project by Roberto Henríquez Perozo
+
 # Can a machine learning algorithm guess the price of a diamond based on its features?
 
 ![diamond colors comparison](INPUT/diamond_color_grid.jpg)
 
-In this case, we have participated in a private Kaggle Competition, which consisted in estimating the price of a diamond, based on the following **features**:
+This week, we have participated in a private Kaggle Competition, which consisted in estimating the price of a diamond, based on a dataset of diamonds labeled with their `price` following **features**:
 
 - `id`: only for test & sample submission files, id for prediction sample identification
 - `price`: price in USD
@@ -19,8 +21,7 @@ In this case, we have participated in a private Kaggle Competition, which consis
 - `depth`: total depth percentage = z / mean(x, y) = 2 * z / (x + y) (43--79)
 - `table`: width of top of diamond relative to widest point (43--95)
 
-
-To predict the price, we began with a minimal research of the topic, and the good ol' fashioned `linear regression`  model to find the correct sale price. 
+To predict the price, we began with a minimal research of the topic, and the good ol' fashioned `linear regression` model to find the correct sale price. 
 
 ## Optimization : `Root Mean Squared Error (RMSE)`
 -------------------------
@@ -44,12 +45,11 @@ As a result of this conversation, we changed the scales of the `clarity`, which 
 
 Aditionally, to enriched our data with an additional `depth_category` column, we copied and transformed the `depth` values into an arbitrary one when they were found between a range that we wanted to specify. --- This was done because  of the information discussed with the jewelery seller **the depth ratio is one of the main features responsible of the refraction of light on a diamond.** If the depth ratio is between the values of `55 to 65` percent, then the light is better refracted when the diamond is seen from above.
 
-![light refraction is most optimal between depth ratios of 50 to 65 %](/INPUT/light_refraction.jpg)
-
+![light refraction is most optimal between depth ratios of 50 to 65 %](/INPUT/light_refraction.png)
 
 These scales of subjective value in the way a diamond refracts light was achieved using the following function of the `src.datahandler.py` module.
 
-![Snippet of code from the src.datahandler.py module](/INPUT/numeric_scales.jpg)
+![Snippet of code from the src.datahandler.py module](/INPUT/numeric_scales.png)
 
 ## Working with machine learning models (estimators):
 With this new metodology for data preprocessing, we achieved a `RMSE` of around `540`. This was a value we felt confident with, and with a score similar to other Kaggle competitors, so finally we took the remaining time of the competitio to refactor our code, prepare this presentation and use all the possible regression estimators from `sklearn` to find out the most appropriate use for our case study: 
