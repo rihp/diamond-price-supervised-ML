@@ -7,8 +7,8 @@ def use_my_numeric_scales(df):
                         Diamond G.I.A. Clarity Scale
                      (separations are not equi-distant)
 
-    IF          VVS1  VVS2         VS1   VS2         SI1  SI2            I1
-    |------------|-----|-------------|-----|-----------|----|-------------|
+    IF         VVS1  VVS2          VS1   VS2         SI1  SI2            I1
+    |------------|----|-------------|----|-----------|----|-------------|
     0.0                                                                   10.0
 
     more info : https://4cs.gia.edu/en-us/diamond-clarity/
