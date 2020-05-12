@@ -2,8 +2,8 @@
 ![Ironhack logo](https://i.imgur.com/1QgrNNw.png)
 
 A weekend project by Roberto Henríquez Perozo
-Data Analytics Bootcamp - March 2020
 
+Data Analytics Bootcamp - March 2020
 
 # Can a machine learning algorithm guess the price of a diamond based on its features?
 
@@ -25,7 +25,7 @@ This week, we have participated in a private Kaggle Competition, which consisted
 
 To predict the price, we began with a minimal research of the topic, and the good ol' fashioned `linear regression` model to find the correct sale price. 
 
-## Optimization : `Root Mean Squared Error (RMSE)`
+## Optimizing our prediction with `Root Mean Squared Error (RMSE)`
 -------------------------
 #### Benchmark:
 For the first attempt, we dropped all the non-numeric features from the dataset (`color`, `clarity`, etc.); and without cleaning the data, we proceeded to submit a prediction to Kaggle which measured an aprroximate `RMSE` value of `1539`.
